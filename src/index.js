@@ -161,7 +161,7 @@ class ECharts extends Component {
       <View style={{ flex: 1 }}>
         <WebView
           ref={this.getWebViewRef}
-          style={this.props.webViewStyle ? ...this.props.webViewStyle : {}}
+          style={this.props.webViewStyle || {}}
           originWhitelist={["*"]}
           scrollEnabled={false}
           source={source}
