@@ -10,6 +10,7 @@ class ECharts extends Component {
   static propTypes = {
     onData: PropTypes.func,
     legacyMode: PropTypes.bool,
+    webViewStyle: PropTypes.object,
     canvas: PropTypes.bool,
     onLoadEnd: PropTypes.func,
     backgroundColor: PropTypes.string,
@@ -160,6 +161,7 @@ class ECharts extends Component {
       <View style={{ flex: 1 }}>
         <WebView
           ref={this.getWebViewRef}
+          style={this.props.webViewStyle ? ...this.props.webViewStyle : {}}
           originWhitelist={["*"]}
           scrollEnabled={false}
           source={source}
