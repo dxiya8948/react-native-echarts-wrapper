@@ -2,7 +2,10 @@
   <br>
   <a href="https://github.com/tomLadder/react-native-echarts-wrapper"><img src="https://raw.githubusercontent.com/tomLadder/react-native-echarts-wrapper/develope/images/echarts.png" alt="ECharts" width="200"></a>
   <br>
-  <h1 align="center">react-native-echarts-wrapper v2.0.0</h1>
+  <h1 align="center">react-native-echarts-wrapper v2.0.1</h1>
+  <h3 align="center">Since react-native-echarts-wrapper did not continue to maintain，Modify according to the original library </h3>
+  <p align="center">original library: https://github.com/tomLadder/react-native-echarts-wrapper</p>
+  <h3 align="center">由于react-native-echarts-wrapper没有继续维护，本库依据 https://github.com/tomLadder/react-native-echarts-wrapper 修改</h3>
   <br>
 </p>
 
@@ -48,7 +51,7 @@ The fact that the charting framework purely runs in a webview makes it very stab
 # How To Use
 
 ```bash
-$ yarn add react-native-echarts-wrapper
+$ yarn add @dixia/react-native-echarts-wrapper
 ```
 
 Make sure you installed <a href="https://github.com/react-native-community/react-native-webview" target="_blank">react-native-webview</a>
@@ -67,7 +70,8 @@ Make sure you installed <a href="https://github.com/react-native-community/react
 | option             | object | take a look at the examples        | Allows you to set the chart configuration (https://ecomfe.github.io/echarts-examples/public/index.html). Never access anything related to your React-Native Javascript code within the options object. It won't work! Take a look at `onData` and `sendData` |
 | customTemplatePath | string | file:///android_assets/index.html  | Use this property if you want to tell echarts where to look for a custom html template. You can use <a href="https://github.com/itinance/react-native-fs" target="_blank">RNFS</a> to get the directory path for Android/iOS.                                |
 | additionalCode     | string | `alert('hello world');`            | Allows you to inject javascript code in the webview. It is used to access the echarts api to create more complex charts (e.G. callback on chart tap). Take a look at <a href="#more-complex-example">More complex example</a>                                |
-| backgroundColor    | string | rgba(255,101,80,0.4), red, #4287f5 | Set the background color of the chart                                                                                                                                                                                                                        |
+| backgroundColor    | string | rgba(255,101,80,0.4), red, #4287f5 | Set the background color of the chart                                 |
+| webViewStyle       | object | webview supported styles          | Allows you to set the webview style in react-native                                        |
 
 # Methods / Callbacks
 
@@ -98,7 +102,7 @@ These functions can be called from code injected with `additionalCode` or within
 ```js
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import { ECharts } from "react-native-echarts-wrapper";
+import { ECharts } from "@dixia/react-native-echarts-wrapper";
 
 export default class App extends Component {
   option = {
@@ -123,6 +127,9 @@ export default class App extends Component {
         <ECharts
           option={this.option}
           backgroundColor="rgba(93, 169, 81, 0.3)"
+          webViewStyle={{
+            backgroundColor: 'transparent',
+         }}
         />
       </View>
     );
@@ -141,7 +148,7 @@ const styles = StyleSheet.create({
 ```js
 import React, { Component } from "react";
 import { StyleSheet, SafeAreaView, Button } from "react-native";
-import { ECharts } from "react-native-echarts-wrapper";
+import { ECharts } from "@dixia/react-native-echarts-wrapper";
 
 export default class App extends Component {
   option = {
@@ -221,7 +228,7 @@ const styles = StyleSheet.create({
 ```js
 import React, { Component } from "react";
 import { StyleSheet, SafeAreaView, Button } from "react-native";
-import { ECharts } from "react-native-echarts-wrapper";
+import { ECharts } from "@dixia/react-native-echarts-wrapper";
 
 export default class App extends Component {
   onRef = ref => {
